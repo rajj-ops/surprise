@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Romantic UI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Teeno Gano Ke Audio Tags (Loop Enabled - Repeat hota rahega) -->
+    <audio id="gussa-audio" src="gussa-music.mp3" loop></audio>
+    <audio id="love-audio" src="love-music.mp3" loop></audio>
+    <audio id="final-audio" src="final-music.mp3" loop></audio>
+
+    <!-- SCREEN 0: Name Input -->
+    <div id="screen-name" class="container">
+        <h2>Generate Love Link ✨</h2>
+        <input type="text" id="name-field" class="name-input" placeholder="Type her name here..." autocomplete="off">
+        <br>
+        <button class="btn" onclick="checkNameInput()">Start App ➔</button>
+        <p id="generated-link" style="color: #fff; margin-top: 15px; font-size: 14px; word-break: break-all;"></p>
+    </div>
+
+    <!-- SCREEN 1: Welcome Intro -->
+    <div id="screen1" class="container hidden">
+        <h2>Hey <span class="user-name"></span> 💖</h2>
+        <p style="color: #ffb3d9;">Do you even know how cute you are?</p>
+        <button class="btn" onclick="startMeasuring()">let's check 😍</button>
+    </div>
+
+    <!-- SCREEN 2: Loading Meter -->
+    <div id="screen2" class="container hidden">
+        <h3>Measuring your cuteness... ⏳</h3>
+        <h1 id="percentage" style="font-size: 50px; margin: 15px 0;">0%</h1>
+        <div class="progress-box"><div class="progress-bar" id="p-bar"></div></div>
+        <p id="alert-msg" class="warning" style="display: none;">⚠️ CRITICAL WARNING: TOO CUTE TO COMPUTE (200% MAXIMUM!)</p>
+        <button id="next-btn" class="btn hidden" onclick="goToRomanticLines()">Continue ➔</button>
+    </div>
+
+    <!-- SCREEN 3: 5 Dialogue Lines -->
+    <div id="screen-lines" class="container hidden">
+        <h2 style="font-style: italic;">Just a small confession... 🥺</h2>
+        <img id="lines-gif" class="sticker" src="Peach Goma angry.gif" alt="cute cat">
+        <p id="romantic-line-text" style="color: #ffb3d9; font-size: 17px; min-height: 80px; line-height: 1.5; padding: 10px;"></p>
+        <button class="btn" onclick="nextRomanticLine()">Next ❤️</button>
+    </div>
+
+    <!-- SCREEN 4: Gussa Ho Kya Loop Screen -->
+    <div id="screen-loop" class="container hidden">
+        <h2 id="loop-title">Ek baat batao... 🧐</h2>
+        <img id="loop-gif" class="sticker" src="Peach Goma angry.gif" alt="cute cat">
+        <p id="loop-msg" style="color: #ffb3d9; font-size: 16px; min-height: 60px; line-height: 1.4;"></p>
+        
+        <div style="display: flex; gap: 20px; justify-content: center; margin-top: 15px;">
+            <button class="btn" style="background: #33cc33; box-shadow: 0 0 10px #33cc33;" onclick="handleGussaLoop('Yes')">Yes 😡</button>
+            <button class="btn" style="background: #ff3333; box-shadow: 0 0 10px #ff3333;" onclick="handleGussaLoop('No')">No 🥰</button>
+        </div>
+
+        <div id="secret-trigger-zone" style="margin-top: 25px; min-height: 50px;">
+            <button id="real-clear-btn" class="btn hidden" style="background: linear-gradient(45deg, #33cc33, #009933); box-shadow: 0 0 15px #33cc33; font-size: 14px; padding: 10px 20px;" onclick="exitGussaScreen()">
+                Sach mein gussa nahi hoon na... 🥰
+            </button>
+        </div>
+    </div>
+
+    <!-- SCREEN 5: Intermediate Screen -->
+    <div id="screen-intermediate" class="container hidden">
+        <h2>Yayyy! 🥰</h2>
+        <img class="sticker" src="happy.gif" alt="happy cat">
+        <p style="color: #ffb3d9; font-size: 18px; line-height: 1.5; padding: 10px;">
+            Chalo abhi tum mere upar gussa nahin ho toh fir chal rahi hai agale page Mein chalte Hain... 💖
+        </p>
+        <button class="btn" onclick="goToLovePage()">Chalo Agle Page Par ✨</button>
+    </div>
+
+    <!-- SCREEN 6: Do You Love Me Screen -->
+    <div id="screen4" class="container hidden" style="position: relative; min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <h2 style="font-size: 26px; margin-bottom: 10px;"><span class="user-name"></span>, Do you love me? 🙈💖</h2>
+        <img id="love-gif" class="sticker" src="cute cat shy blushing.gif" alt="love cat">
+        <p id="romantic-plea" style="color: #ffb3d9; font-size: 16px; margin-top: 10px; min-height: 50px; text-align: center; width: 100%; padding: 0 10px; box-sizing: border-box;"></p>
+        
+        <div id="love-btn-wrapper">
+            <button id="run-yes-btn" class="btn" style="background: #ff007f;" onclick="goToFinalNote()">Yes! 👑</button>
+            <button id="run-no-btn" class="btn" style="background: #555;" onmouseover="moveNoButton()" onclick="moveNoButton()">No 💔</button>
+        </div>
+    </div>
+
+    <!-- SCREEN 7: Final Note Box -->
+    <div id="screen5" class="container hidden">
+        <h2 style="font-style: italic; color: #ff007f; text-shadow: 0 0 10px rgba(255,0,127,0.3);">Our Beautiful Forever... ✨</h2>
+        <div class="note-box">
+            <img class="sticker" src="Peach Goma hug.gif" alt="sticker">
+            <span id="typewriter-text"></span>
+        </div>
+        <button id="restart-btn" class="btn hidden" style="background: linear-gradient(45deg, #0099ff, #66b2ff); box-shadow: 0 0 15px #0099ff;" onclick="restartApp()">
+            Chalo dobara se shuru karte hain... 🔄
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

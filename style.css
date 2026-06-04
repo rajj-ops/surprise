@@ -1,0 +1,155 @@
+body {
+    background-color: #0d000a;
+    color: #ff66b2;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+    position: relative;
+}
+
+.container { 
+    text-align: center; 
+    padding: 20px; 
+    width: 90%; 
+    max-width: 400px; 
+    z-index: 10; 
+    box-sizing: border-box; 
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.hidden { display: none !important; }
+
+.name-input {
+    width: 80%;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 2px solid #ff007f;
+    background: #26001c;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+    margin-bottom: 15px;
+}
+
+.btn {
+    background: linear-gradient(45deg, #ff007f, #ff66b2);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff007f;
+    transition: 0.2s;
+    margin-top: 15px;
+}
+
+/* Fix: Yes aur No buttons ko standard horizontal row mein lane ke liye */
+#love-btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 25px;
+}
+
+#run-no-btn { 
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+/* Background floating hearts animation */
+.bg-heart {
+    position: absolute;
+    color: rgba(255, 0, 127, 0.15);
+    font-size: 20px;
+    pointer-events: none;
+    bottom: -50px;
+    animation: floatBackground 6s linear infinite;
+    z-index: 1;
+}
+
+@keyframes floatBackground {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-105vh) rotate(360deg); opacity: 0; }
+}
+
+/* Progress bar styling */
+.progress-box { 
+    width: 100%; 
+    background-color: #26001c; 
+    border-radius: 10px; 
+    padding: 4px; 
+    border: 1px solid #ff007f; 
+    box-shadow: 0 0 10px #ff007f; 
+    box-sizing: border-box; 
+}
+
+.progress-bar { 
+    width: 0%; 
+    height: 16px; 
+    background-color: #ff007f; 
+    border-radius: 8px; 
+}
+
+.warning { 
+    color: #ff3333; 
+    font-weight: bold; 
+    animation: blink 1s infinite; 
+    margin-top: 15px; 
+}
+
+@keyframes blink { 50% { opacity: 0.5; } }
+
+/* Final Typewriter Note Box styling */
+.note-box { 
+    background: rgba(255, 255, 255, 0.95); 
+    color: #222; 
+    padding: 22px; 
+    border-radius: 18px; 
+    box-shadow: 0 0 30px rgba(255, 0, 127, 0.6); 
+    text-align: left; 
+    margin-top: 20px; 
+    font-weight: 500; 
+    line-height: 1.6; 
+    font-size: 15px;
+}
+
+/* Sticker / GIF Layout constraint (broken space fix) */
+.sticker { 
+    width: 150px; 
+    height: 150px; 
+    display: block; 
+    margin: 0 auto 10px auto; 
+    object-fit: contain; 
+    border-radius: 10px;
+}
+
+/* Click burst heart animation effect */
+.click-heart { 
+    position: absolute; 
+    font-size: 20px; 
+    pointer-events: none; 
+    animation: floatUp 0.6s ease-out forwards; 
+    z-index: 100; 
+}
+
+@keyframes floatUp {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    100% { transform: translate(-50%, -120%) scale(1.4); opacity: 0; }
+}
