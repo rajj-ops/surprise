@@ -54,11 +54,10 @@ window.addEventListener('click', function(e) {
     setTimeout(() => { heart.remove(); }, 600);
 });
 
-// App Shuru Hote Hi Aapka "Tumsa Koi Pyaara" (gussa-music.mp3) Play Hoga Aur Repeat Hota Rahega
 function startMeasuring() {
     let gussaMusic = document.getElementById('gussa-audio');
     if (gussaMusic && !gussaMusicStarted) {
-        gussaMusic.play().catch(err => console.log("Audio waiting user touch..."));
+        gussaMusic.play().catch(err => console.log("Audio bypass waiting..."));
         gussaMusicStarted = true;
     }
 
@@ -128,23 +127,24 @@ function handleGussaLoop(buttonType) {
 
     if(!buttonType) buttonType = 'No';
 
+    // === TARGETED CHANGE: Real situation custom emotional sorry messages ===
     if(buttonType === 'Yes') {
-        titleElement.innerText = "Gussa ho? Mujhse? 🥺";
+        titleElement.innerText = "I am so sorry... 🥺";
         const yesMessages = [
-            "Arre re! Itna gussa? Chalo ab jaldi se gussa thanda karo... 🍫",
-            "Maan jao na, gusse mein toh thik ho par haste hue bilkul jaan lagti ho! ❤️",
-            "Kitna sataogi mujhe? Ab maaf bhi kar do please! 🙇‍♂️",
-            "Achha sorry baba! Ab niche wale option ko dekh kar sach sach dabo na! 🥰"
+            "Mujhe pata hai 2 din message nahi kiya aur upar se doosri ladkiyon ki story lagayi, isiliye gussa ho na... Meri sabse badi galti thi... 💔",
+            "Woh saari stories aur flirt chat ss bas doston ke sath mazaak tha laddo, mere dil mein aapke alawa koi nahi hai, sachhi! 🥺",
+            "Aapka gussa hona 100% sahi hai, maine aapka dil dukhaya. Please mujhe maaf kar do na... 🙇‍♂️🍫",
+            "Ab gussa thanda karo meri jaan, niche wale green option ko dekho aur maaf kar ke aage badho please! 🥰❤️"
         ];
         msgElement.innerText = yesMessages[loopClickCount % yesMessages.length];
         gifElement.src = "Peach Goma sorry.gif";
     } else {
         titleElement.innerText = "Jhooth mat bolo! 🤨";
         const noMessages = [
-            "Mujhe pata hai aap upar se 'No' bol rahe ho par andar se gussa ho... 🥺",
-            "Face se toh gussa dikh raha hai laddo! Sach batao... 🙈",
+            "Mujhe pata hai aap upar se 'No' bol rahe ho par andar se un stories ko dekh kar bohot gussa ho... 🥺",
+            "Face se toh gussa saaf dikh raha hai laddo! Story wali baat par naraz ho na... 🙈",
             "Jhooth bolna paap hai! Accha sach mein gussa nahi ho toh niche dabo na... 😂❤️",
-            "Itna nakhre mat dikhao, jaldi se niche wala option dabo aur aage chalo! 🌹"
+            "Itna nakhre mat dikhao, jaldi se niche wala option dabo aur mere dil ki baat suno! 🌹"
         ];
         msgElement.innerText = noMessages[loopClickCount % noMessages.length];
         gifElement.src = "Peach Goma angry.gif";
@@ -156,7 +156,6 @@ function exitGussaScreen() {
     document.getElementById('screen-intermediate').classList.remove('hidden');
 }
 
-// === GAANA SWITCH 1: Do You Love Me Page Khulne Par Hi Pehla Gana Band Hokar Dusra Shuru Hoga ===
 function goToLovePage() {
     let gussaMusic = document.getElementById('gussa-audio');
     let loveMusic = document.getElementById('love-audio');
@@ -213,7 +212,6 @@ function moveNoButton() {
     noBtn.style.top = y + 'px';
 }
 
-// === GAANA SWITCH 2: Final Climax Screen Khulne Par Hi Teesra Gana Play Hoga ===
 function goToFinalNote() {
     let loveMusic = document.getElementById('love-audio');
     let finalMusic = document.getElementById('final-audio');
@@ -243,7 +241,6 @@ function startTypewriter() {
     }
 }
 
-// === RESTART RESET SYSTEM ===
 function restartApp() {
     index = 0;
     lineIndex = 0;
